@@ -1,51 +1,97 @@
-# Natural ou Fake Natty? Como Vencer na Era das IAs Generativas
-
-## 🚀 Introdução
-
-> Woooow! Look at this 👀
-
-Olá pessoal, Venilton da DIO aqui! Inspirado na hype _"Natty or Not"_ do fisiculturismo, este Lab da DIO te convida a conhecer o mundo das IAs Generativas, explorando o potencial dessas tendências tecnológicas incríveis!
-
-## 🎯 Bora Pro Desafio!? Você Já Venceu 💪🤓
-
-### Objetivos
-
-1. **Explorar IAs Generativas**: Utilize essas tecnologias para criar conteúdos que sejam o mais realista possível. Seja criativo! Você pode produzir imagens, textos, áudios, vídeos ou combinações de tudo isso!
-1. **Potfólio de Projetos**:
-    1. Faça o "fork" deste repositório, criando uma cópia em seu GitHub pessoal;
-    2. Edite seu README com os detalhes do seu projeto, siga nosso [Template](#template) (é só copiar, colar e preencher);
-    3. Submeta o link do seu repositório na plataforma da DIO. Pronto, você acabou de fortalecer seu portfólio de projetos nos perfis do GitHub e DIO 🚀
-1. **Efeito de Rede**: Compartilhe seus resultados nas redes sociais com a hashtag **#LabDIONattyOrNot**. Não esqueça de nos marcar: [DIO](https://www.linkedin.com/school/dio-makethechange) e [falvojr](https://www.linkedin.com/in/falvojr).
-
-### Template
-
-```markdown
 # Título do Projeto Extremamente Aesthetic ;)
 
 ## 📒 Descrição
-Breve descrição do seu projeto
+Como utilizar IA para aprender linguagem de programaçao
 
 ## 🤖 Tecnologias Utilizadas
-Liste as IAs Generativas e outras ferramentas usadas
+COPILOT
 
 ## 🧐 Processo de Criação
-Descreva como você criou o conteúdo
+O material foi gerado solicitando que o COPILOT verificasse erros no código apresentado, incialmente a linguagem era o C#, mas ao iniciar o estudo em PYTHON consegui ir um pouco além do que era proposto no Curso.
 
 ## 🚀 Resultados
-Apresente os resultados do seu projeto
+# Entrada maior que zero
+def input_maior_que_zero(mensagem, tipo):
+    while True:
+        try:
+            valor = tipo(input(mensagem))
+            if valor > 0:
+                return valor
+            else:
+                print("O valor deve ser maior que zero.")
+        except ValueError:
+            print("O valor deve ser um número válido.")
 
-## 💭 Reflexão (Opcional)
-Comente sobre o desafio de criar algo 'natty' com IA.
-```
+# Entrada de Números que Aceitem Zero e Valores Negativos
+def input_com_negativos(mensagem, tipo):
+    while True:
+        try:
+            valor = tipo(input(mensagem))
+            return valor
+        except ValueError:
+            print("O valor deve ser um número válido.")
 
-### Exemplos e Insigths
+# Declaração das matrizes
+n = input_maior_que_zero("Qual a ordem das matrizes? ", int)
+matA = [[0 for _ in range(n)] for _ in range(n)]
+matB = [[0 for _ in range(n)] for _ in range(n)]
 
-- [E-BOOK](/exemplos/E-BOOK.md)
-- [Podcast](/exemplos/PODCAST.md)
-- [Vídeo (Avatar Virtual)](/exemplos/VIDEO.md)
+# Entrada de dados da matriz matA
+print("Digite os dados da matriz A:")
+for i in range(n):
+    for j in range(n):
+        matA[i][j] = input_com_negativos(f"Elemento [{i};{j}]: ", float)
 
-## Links Interessantes
+# Somar números positivos da matriz e imprimir resultado
+somaPositivos = 0
+for i in range(n):
+    for j in range(n):
+        if matA[i][j] > 0:
+            somaPositivos += matA[i][j]
+print(f"\nSoma dos positivos = {somaPositivos:.1f}")
+print("")
 
-[Base10: If You’re Not First, You’re Last: How AI Becomes Mission Critical](https://base10.vc/post/generative-ai-mission-critical/)
+# Escolher uma linha da matriz e imprimir essa linha
+linha = input_maior_que_zero("Escolha uma linha (0 a n-1): ", int)
+if linha >= n:
+    print("Linha inválida!")
+else:
+    print("Linha escolhida: ", end="")
+    for j in range(n):
+        print(f"{matA[linha][j]} ", end="")
+    print("")
+print("")
 
-![Base10's Trend Map Generative AI](https://github.com/digitalinnovationone/lab-natty-or-not/assets/730492/f4df26e8-f8f7-4419-8252-c69d73ea930c)
+# Escolher uma coluna da matriz e imprimir essa coluna
+coluna = input_maior_que_zero("Escolha uma coluna (0 a n-1): ", int)
+if coluna >= n:
+    print("Coluna inválida!")
+else:
+    print("Coluna escolhida: ", end="")
+    for i in range(n):
+        print(f"{matA[i][coluna]} ", end="")
+    print("")
+print()
+
+# Imprimir a diagonal principal
+print("Diagonal principal:")
+for i in range(n):
+    print(f"{matA[i][i]} ", end="")
+print("")
+print("")
+
+#gerar matriz B
+print("Matriz Alterada.")
+for i in range(n):
+    for j in range(n):
+        if matA[i][j] < 0:
+            matB[i][j] = matA[i][j]**2
+        else:
+            matB[i][j] = matA[i][j]
+
+#imprimir matriz b
+for i in range(n):
+    for j in range(n):
+        print(f"{matB[i][j]:.1f} ", end="")
+    print("")
+
